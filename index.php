@@ -2,6 +2,7 @@
 
 // make dd() function available (for debugging/checking variable states)
 require 'functions.php';
+require 'Task.php';
 
 try {
 	$pdo = new PDO('mysql:host=localhost;dbname=mytodo', 'root', 'blah1234');
@@ -16,7 +17,7 @@ $statement->execute();
 // dd($statement->fetchAll());
 // dd($statement->fetchAll(PDO::FETCH_OBJ));
 
-$tasks = $statement->fetchAll(PDO::FETCH_OBJ);
+$tasks = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
 // dd($tasks[5]->description);
 
 require 'index.view.php';
