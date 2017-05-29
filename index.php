@@ -1,23 +1,10 @@
 <?php 
 
-// make dd() function available (for debugging/checking variable states)
 require 'functions.php';
 require 'Task.php';
 
-try {
-	$pdo = new PDO('mysql:host=localhost;dbname=mytodo', 'root', 'blah1234');
-} catch (PDOException $e) {
-	die($e->getMessage());
-}
+$pdo = connectToDb();
 
-$statement = $pdo->prepare('SELECT * FROM todos');
-
-$statement->execute();
-
-// dd($statement->fetchAll());
-// dd($statement->fetchAll(PDO::FETCH_OBJ));
-
-$tasks = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
-// dd($tasks[5]->description);
+$tasks = fetchAllTasks($pdo);
 
 require 'index.view.php';
