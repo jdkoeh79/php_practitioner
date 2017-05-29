@@ -1,43 +1,22 @@
 <?php 
 
-// makes dd() function available (for debugging/checking variable states)
+// make dd() function available (for debugging/checking variable states)
 require 'functions.php';
 
-class Task {
-
-	protected $description;
-	protected $completed = false;
-
-	public function __construct($description)
-	{
-		$this->description = $description;
-	}
-
-	public function description()
-	{
-		return $this->description;
-	}
-
-	public function complete()
-	{
-		$this->completed = true;
-	}
-
-	public function completed()
-	{
-		return $this->completed;
-	}
+try {
+	$pdo = new PDO('mysql:host=localhost;dbname=mytodo', 'root', 'blah1234');
+} catch (PDOException $e) {
+	die($e->getMessage());
 }
 
+$statement = $pdo->prepare('SELECT * FROM todos');
 
-$tasks = [
-	new Task('Go to the store'),
-	new Task('Finish my screencast'),
-	new Task('Clean my room')
-];
+$statement->execute();
 
+// dd($statement->fetchAll());
+// dd($statement->fetchAll(PDO::FETCH_OBJ));
 
-$tasks[0]->complete();
-
+$tasks = $statement->fetchAll(PDO::FETCH_OBJ);
+// dd($tasks[5]->description);
 
 require 'index.view.php';
