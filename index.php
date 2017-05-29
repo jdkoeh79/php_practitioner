@@ -23,7 +23,7 @@ class Task {
 		$this->completed = true;
 	}
 
-	public function isComplete()
+	public function completed()
 	{
 		return $this->completed;
 	}
