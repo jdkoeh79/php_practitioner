@@ -10,7 +10,7 @@
 
 // use pdo->prepare to perform and INSERT
 
-$app['database']->insert('users', [
+App::get('database')->insert('users', [
 	'name' => $_POST['name']
 ]);
 
