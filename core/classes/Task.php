@@ -7,6 +7,8 @@
 // make dd() function available (for debugging/checking variable states)
 // require 'functions.php';
 
+namespace App\Controllers;
+
 class Task {
 
 	protected $description;
