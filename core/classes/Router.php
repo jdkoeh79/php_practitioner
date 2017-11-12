@@ -26,6 +26,7 @@ class Router
 		if (array_key_exists($uri, $this->routes[$requestType])) {
 
 			return $this->callAction(
+				// the ... takes a varying number of arguments and puts them into an array (called a Splat operator)
 				...explode('@', $this->routes[$requestType][$uri])
 			);
 		}
@@ -40,7 +41,7 @@ class Router
 		$controller = new $controller;
 
 		if (! method_exists($controller, $action)) {
-			throw new Exception(
+			throw new \Exception(
 				"{$controller} does not respond to the {$action} action."
 			);
 		}
