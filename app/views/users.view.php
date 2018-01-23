@@ -24,13 +24,6 @@
 	<?php endforeach; ?>
 
 </table>
-<!-- <ul>
-	<?php foreach ($users as $user) : ?>
-		<li>
-			<?= $user->name; ?> <a href="" onclick="deleteUser(<?= $user->id ?>)">[X]</a>
-		</li>
-	<?php endforeach; ?>
-</ul> -->
 
 <h1>Submit Your Name</h1>
 

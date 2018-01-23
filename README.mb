@@ -1,0 +1,8 @@
+https://laracasts.com/series/php-for-beginners
+
+A basic MVC framework in PHP, built on Laravel's Homestead VM dev environment.
+
+Database setup:
+
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('secret');
+CREATE TABLE users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(120));

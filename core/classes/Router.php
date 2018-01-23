@@ -26,7 +26,6 @@ class Router
 		if (array_key_exists($uri, $this->routes[$requestType])) {
 
 			return $this->callAction(
-				// the ... takes a varying number of arguments and puts them into an array (called a Splat operator)
 				...explode('@', $this->routes[$requestType][$uri])
 			);
 		}
